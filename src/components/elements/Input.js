@@ -1,6 +1,9 @@
-import React from 'react'
+import React , { useContext }from 'react'
+import { FormContext } from '../../FormContext'
 
 const Input = ({field_id, field_label, field_value, field_placeholder}) => {
+
+  const {handleChange} = useContext(FormContext);
   return (
     <div><label htmlFor="exampleInputEmail1">{field_label}</label>
     <input
@@ -10,6 +13,7 @@ const Input = ({field_id, field_label, field_value, field_placeholder}) => {
       aria-describedby="emailHelp"
       placeholder={field_placeholder? field_placeholder: '' }
       value={field_value}
+      onChange={(e) => handleChange(field_id, e)}
     />
     <small>this is a test</small>
     </div>

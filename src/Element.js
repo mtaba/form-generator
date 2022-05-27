@@ -4,7 +4,14 @@ import Select from "./components/elements/Select";
 import CheckBox from "./components/elements/CheckBox";
 
 const Element = ({
-  field: { field_type, field_id, field_label, field_value, field_placeholder, field_options },
+  field: {
+    field_type,
+    field_id,
+    field_label,
+    field_value,
+    field_placeholder,
+    field_options,
+  },
 }) => {
   switch (field_type) {
     case "text":
@@ -26,8 +33,16 @@ const Element = ({
           field_options={field_options}
         />
       );
-    case "checbox":
-      return <CheckBox />;
+    case "checkbox":
+      return (
+        <CheckBox
+          field_id={field_id}
+          field={field_value}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_options={field_options}
+        />
+      );
     default:
       return null;
   }

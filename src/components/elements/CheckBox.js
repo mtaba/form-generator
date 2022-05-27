@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { FormContext } from '../../FormContext';
+const Checkbox = ({ field_id, field_label, field_value }) => {
+    const { handleChange } = useContext(FormContext)
 
-const CheckBox = () => {
-  return (
-      <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
+    return (
+        <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id={field_id} checked={field_value}
+                onChange={event => handleChange(field_id, event)}
+            />
+            <label className="form-check-label" htmlFor="exampleCheck1">{field_label}</label>
         </div>
-  )
+    )
 }
-export default CheckBox;
+
+export default Checkbox
